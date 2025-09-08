@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Estudiantes</title>
+    <style>
+        body {
+            background: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        h1 {
+            text-align: center;
+            color: #fff;
+            margin-top: 40px;
+            letter-spacing: 2px;
+            text-shadow: 1px 2px 8px #2980b9;
+        }
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .card {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(44, 62, 80, 0.13);
+            margin-bottom: 30px;
+            padding: 28px 32px 20px 32px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+        }
+        .card:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 8px 32px rgba(44, 62, 80, 0.18);
+        }
+        .nombre {
+            color: #2980b9;
+            font-size: 1.4em;
+            font-weight: bold;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+        .edad, .notas, .promedio {
+            color: #34495e;
+            font-size: 1.08em;
+            margin-bottom: 6px;
+        }
+        .promedio {
+            color: #27ae60;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .divider {
+            border: none;
+            border-top: 1px solid #e1e8ed;
+            margin: 18px 0 0 0;
+        }
+        @media (max-width: 650px) {
+            .container {
+                max-width: 98vw;
+                padding: 0 2vw;
+            }
+            .card {
+                padding: 18px 10px 14px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Lista de Estudiantes</h1>
+    <div class="container" id="salida"></div>
+    <script src="script.js"></script>
+    <script>
+        // Mostrar resultados en la página con más estilo
+        let salida = "";
+        for (let i = 0; i < estudiantes.length; i++) {
+            let promedio = calcularPromedio(estudiantes[i].notas);
+            salida += `
+                <div class="card">
+                    <div class="nombre">${estudiantes[i].nombre}</div>
+                    <div class="edad"><strong>Edad:</strong> ${estudiantes[i].edad} años</div>
+                    <div class="notas"><strong>Notas:</strong> ${estudiantes[i].notas.join(', ')}</div>
+                    <div class="promedio">Promedio: ${promedio.toFixed(2)}</div>
+                </div>
+            `;
+        }
+        document.getElementById("salida").innerHTML = salida;
+    </script>
+</body>
+</html>
